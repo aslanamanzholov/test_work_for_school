@@ -2,7 +2,7 @@ version: '3'
 
 services:
   postgres:
-    container_name: postgres
+    container_name: postgres_tech_task
     image: postgres:12.1-alpine
     logging:
       driver: none
@@ -15,28 +15,8 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
 
-  rabbitmq:
-    container_name: rabbitmq
-    image: rabbitmq:3.8.2-alpine
-    logging:
-      driver: none
-    #volumes:
-    #  - ./rabbitmq:/var/lib/rabbitmq:rw
-    #ports:
-    #  - 15672:15672
-    #  - 5672:5672
-    environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=pass
-
-  redis:
-    container_name: redis
-    image: redis:5.0.7-alpine3.10
-    logging:
-      driver: none
-
   django:
-    container_name: django
+    container_name: django_tech_task
     build: ./
     entrypoint: ./entrypoint.sh
     volumes:
@@ -63,18 +43,5 @@ services:
       check: python manage.py check --deploy
       shell: python manage.py shell_plus
       createsuperuser: "python manage.py createsuperuser
-      --username=muslimbeibytuly
-      --email=muslimbeibytuly@gmail.com"
-
-  celery:
-    container_name: celery
-    build: ./
-    entrypoint: ./entrypoint.sh
-    volumes:
-      - ./src:/src:rw
-      - ./.env:/src/core/.env
-    depends_on:
-      - postgres
-      - rabbitmq
-    environment:
-      MODE: CELERY
+      --username=aslanamanzholov
+      --email=fenixx977@gmail.com"

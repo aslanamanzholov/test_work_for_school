@@ -61,7 +61,7 @@ test:
 deploy_prod:
   variables:
     DEPLOY_HOST: "host ip or domain"
-    DEPLOY_PATH: "/srv/seed"
+    DEPLOY_PATH: "/srv/test_school_work"
     LOCAL_PATH: "deploy/prod/*"
   <<: *deploy_project
   only:
