@@ -9,4 +9,5 @@ DEFAULT_APPS: Tuple = (
     'corsheaders', 'rest_framework',
     'drf_yasg', 'django_extensions',
     # project apps
+    'core.topics'
 )
